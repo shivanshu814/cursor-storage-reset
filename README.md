@@ -16,6 +16,8 @@ Writes use an **atomic replace** (temp file + `fsync`) so a crash mid-save is un
 
 ## Install
 
+> **`pip` is enough:** Run one of the install commands below — the package is ready to use. **No clone, no build, no extra setup.** Then run `cursor-storage-reset` or `python3 -m cursor_storage_reset`; that’s all you need.
+
 ### From PyPI (recommended)
 
 ```bash
