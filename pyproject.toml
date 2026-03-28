@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cursor-storage-reset"
+version = "1.0.0"
+description = "Safely regenerate Cursor globalStorage telemetry fields in storage.json"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+authors = [{ name = "Shivanshu814" }]
+keywords = ["cursor", "storage", "telemetry", "privacy"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: MacOS :: MacOS X",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/shivanshu814/cursor-storage-reset"
+Repository = "https://github.com/shivanshu814/cursor-storage-reset"
+Issues = "https://github.com/shivanshu814/cursor-storage-reset/issues"
+
+[project.scripts]
+cursor-storage-reset = "cursor_storage_reset.cli:main"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "pytest-cov>=4.1",
+  "mypy>=1.8",
+  "ruff>=0.3",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cursor_storage_reset = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
+
+[tool.coverage.run]
+branch = true
+source = ["cursor_storage_reset"]
+
+[tool.mypy]
+python_version = "3.8"
+packages = ["cursor_storage_reset"]
+strict = true
+show_error_codes = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+select = ["E", "F", "I", "UP"]
