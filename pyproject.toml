@@ -7,7 +7,7 @@ name = "cursor-storage-reset"
 version = "1.0.0"
 description = "Safely regenerate Cursor globalStorage telemetry fields in storage.json"
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
 requires-python = ">=3.8"
 authors = [{ name = "Shivanshu814" }]
 keywords = ["cursor", "storage", "telemetry", "privacy"]
@@ -15,7 +15,6 @@ classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Console",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Operating System :: MacOS :: MacOS X",
   "Operating System :: Microsoft :: Windows",
   "Operating System :: POSIX :: Linux",
@@ -42,6 +41,8 @@ dev = [
   "pytest-cov>=4.1",
   "mypy>=1.8",
   "ruff>=0.3",
+  "build>=1.0",
+  "twine>=5.0",
 ]
 
 [tool.setuptools.packages.find]

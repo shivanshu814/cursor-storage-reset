@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![PyPI](https://img.shields.io/pypi/v/cursor-storage-reset.svg)](https://pypi.org/project/cursor-storage-reset/)
 
 **Repository:** [github.com/shivanshu814/cursor-storage-reset](https://github.com/shivanshu814/cursor-storage-reset) · **Author:** [@shivanshu814](https://github.com/shivanshu814)
 
@@ -14,6 +15,16 @@ Small, tested, cross-platform utility. It regenerates these fields in Cursor’s
 Writes use an **atomic replace** (temp file + `fsync`) so a crash mid-save is unlikely to leave truncated JSON. Keys outside the telemetry trio are preserved.
 
 ## Install
+
+### From PyPI (recommended)
+
+```bash
+pip install cursor-storage-reset
+```
+
+PyPI project: [pypi.org/project/cursor-storage-reset](https://pypi.org/project/cursor-storage-reset/).
+
+### From source
 
 Clone (same name as on GitHub):
 
@@ -69,6 +80,20 @@ Restart Cursor after a successful run.
 pip install -e ".[dev]"
 pytest
 ```
+
+### Maintainer: publish to PyPI
+
+1. Create an account on [pypi.org](https://pypi.org) and an **API token** (scope: entire account or this project).
+2. Build and upload (do **not** commit the token):
+
+```bash
+pip install build twine
+python -m build
+twine check dist/*
+TWINE_USERNAME=__token__ TWINE_PASSWORD=pypi-YOUR_TOKEN_HERE twine upload dist/*
+```
+
+Use [TestPyPI](https://test.pypi.org/) first if you want a dry run (`twine upload --repository testpypi dist/*` after configuring `~/.pypirc`).
 
 ## API
 
