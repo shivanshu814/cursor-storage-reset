@@ -95,6 +95,8 @@ TWINE_USERNAME=__token__ TWINE_PASSWORD=pypi-YOUR_TOKEN_HERE twine upload dist/*
 
 Use [TestPyPI](https://test.pypi.org/) first if you want a dry run (`twine upload --repository testpypi dist/*` after configuring `~/.pypirc`).
 
+**Without storing a token in GitHub:** enable [Trusted Publishing](https://docs.pypi.org/trusted-publishers/) on PyPI for project `cursor-storage-reset`, repository `shivanshu814/cursor-storage-reset`, workflow `publish-pypi.yml`. Then open **Actions → Publish Python package to PyPI → Run workflow**, or push a tag `v1.0.0` to trigger a release build.
+
 ## API
 
 ```python

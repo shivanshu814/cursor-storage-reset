@@ -1,0 +1,37 @@
+# Publish to PyPI using Trusted Publishing (OIDC) — no long-lived API token in GitHub secrets.
+# PyPI: add a "pending" trusted publisher for this repo and workflow file, then run this workflow once.
+# Docs: https://docs.pypi.org/trusted-publishers/adding-a-publisher/
+
+name: Publish Python package to PyPI
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build tools
+        run: pip install --upgrade pip build
+
+      - name: Build sdist and wheel
+        run: python -m build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
