@@ -24,6 +24,36 @@ pip install cursor-storage-reset
 
 PyPI project: [pypi.org/project/cursor-storage-reset](https://pypi.org/project/cursor-storage-reset/).
 
+### Install with `pip` / `python -m pip` only (no clone)
+
+Use this when you don’t want to download the repo — only the package. On many systems **`python3 -m pip`** is more reliable than plain `pip` (right Python + avoids “externally managed environment” surprises if you use a venv).
+
+```bash
+# Latest from PyPI
+python3 -m pip install cursor-storage-reset
+
+# Upgrade to newest release
+python3 -m pip install -U cursor-storage-reset
+```
+
+### Install latest code from GitHub with `pip` (no `git clone` folder)
+
+Installs straight from the default branch:
+
+```bash
+python3 -m pip install "git+https://github.com/shivanshu814/cursor-storage-reset.git"
+```
+
+Then run:
+
+```bash
+cursor-storage-reset --help
+# or
+python3 -m cursor_storage_reset --help
+```
+
+*(If your OS blocks system-wide installs, create a venv first and run the same `pip` commands inside it.)*
+
 ### From source
 
 Clone (same name as on GitHub):
@@ -51,20 +81,59 @@ After install, the console entry point `cursor-storage-reset` is available.
 
 ## Usage
 
+Restart Cursor after a successful run.
+
+### Option A: installed command (if `Scripts` / `bin` is on your `PATH`)
+
 ```bash
-# Use the default path for the current OS
+# Default storage.json for this OS
 cursor-storage-reset
 
-# Custom file
+# Explicit file
 cursor-storage-reset /path/to/storage.json
 
-# Show the resolved default for this machine
+# Print where Cursor’s default file is on this machine
 cursor-storage-reset --print-default
 
-python -m cursor_storage_reset --version
+# Version
+cursor-storage-reset --version
+
+# All flags
+cursor-storage-reset --help
 ```
 
-Restart Cursor after a successful run.
+### Option B: same thing via Python (`python -m`) — useful when `PATH` is messy
+
+After `pip install cursor-storage-reset`, run the module name **`cursor_storage_reset`** (underscores), not the PyPI hyphen name:
+
+```bash
+# Default path
+python3 -m cursor_storage_reset
+
+# Windows (try one of these, whichever works on your PC)
+python -m cursor_storage_reset
+py -3 -m cursor_storage_reset
+```
+
+```bash
+# Custom storage.json
+python3 -m cursor_storage_reset /path/to/storage.json
+
+# Default path location only
+python3 -m cursor_storage_reset --print-default
+
+python3 -m cursor_storage_reset --version
+python3 -m cursor_storage_reset --help
+```
+
+This is the same program as `cursor-storage-reset`; only the way you launch it changes.
+
+### Option C: `pipx` (isolated app environment)
+
+```bash
+pipx install cursor-storage-reset
+cursor-storage-reset --help
+```
 
 ### Default paths
 
